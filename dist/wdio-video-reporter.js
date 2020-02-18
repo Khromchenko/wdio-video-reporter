@@ -452,8 +452,6 @@ class Video extends WdioReporter {
     config.usingAllure = !!allureConfig;
     const logLevel = browser.config.logLevel;
     config.debugMode = logLevel.toLowerCase() === 'trace' || logLevel.toLowerCase() === 'debug';
-    this.write('Using reporter config:' + JSON.stringify(browser.config.reporters, undefined, 2) + '\n\n');
-    this.write('Using config:' + JSON.stringify(config, undefined, 2) + '\n\n\n');
 
     // Jasmine and Mocha ought to behave the same regarding test-structure
     this.framework = browser.config.framework === 'cucumber' ? cucumberFramework : defaultFramework;
@@ -562,9 +560,6 @@ class Video extends WdioReporter {
         started = true;
         helpers.debugLog(`\n--- FFMPEG is done ---\n\n`);
 
-        this.write('\nGenerated:' + JSON.stringify(this.videos, undefined, 2) + '\n\n');
-
-        this.write(`\n\nVideo reporter Done!\n`);
         this.isDone = true;
       }
     };
